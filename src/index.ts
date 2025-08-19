@@ -8,11 +8,9 @@ import messageRouter from "./route/messageRoute.js";
 import { app, server } from "./lib/server.js";
 import authRouter from "./route/auth.js";
 import ConnectDB from "./connect/ConnectDb.js";
-import job from "./cron.js";
 
 dotenv.config();
 ConnectDB();
-job.start();
 app.use(cookieParser());
 app.use(
   cors({
