@@ -3,7 +3,7 @@
     "module": "nodenext",
     "target": "esnext",
     "moduleResolution": "nodenext",
-    "types": ["node", "express"],
+    "types": ["node"],
     "strict": true,
     "skipLibCheck": true,
     "outDir": "dist",
