@@ -12,7 +12,7 @@ dotenv.config();
 ConnectDB();
 app.use(cookieParser());
 app.use(cors({
-    origin: process.env.FrontendUrl,
+    origin: [process.env.FrontendUrl],
     credentials: true,
 }));
 app.use(morgan("dev"));

@@ -14,7 +14,7 @@ ConnectDB();
 app.use(cookieParser());
 app.use(
   cors({
-    origin: process.env.FrontendUrl as string,
+    origin: [process.env.FrontendUrl as string],
     credentials: true,
   })
 );
