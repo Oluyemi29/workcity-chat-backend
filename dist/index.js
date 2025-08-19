@@ -8,7 +8,7 @@ import messageRouter from "./route/messageRoute.js";
 import { app, server } from "./lib/server.js";
 import authRouter from "./route/auth.js";
 import ConnectDB from "./connect/ConnectDb.js";
-import job from "./cron.js";
+// import job from "./cron.js";
 dotenv.config();
 ConnectDB();
 app.use(cookieParser());
@@ -19,7 +19,7 @@ app.use(cors({
 app.use(morgan("dev"));
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb" }));
-job.start();
+// job.start();
 app.use("/api", authRouter);
 app.use("/api", conversationRouter);
 app.use("/api", messageRouter);
