@@ -15,22 +15,15 @@ const io = new Server(server, {
   },
 });
 
+const onlineUser = new Map<string, string>();
 io.on("connection", (socket) => {
   console.log("User connected: " + socket.id);
 
-  let onlineUser: { userId: string; socketId: string }[] = [];
   socket.on("joinConversation", (conversationId) => {
     socket.join(conversationId);
   });
-
   socket.on("addUser", (userId) => {
-    if (
-      !onlineUser.filter((eachOnlineUser) => {
-        return eachOnlineUser.userId === userId;
-      })
-    ) {
-      onlineUser.push({ userId, socketId: socket.id });
-    }
+    onlineUser.set(userId, socket.id);
     io.emit("getOnlineUsers", onlineUser);
   });
 
@@ -104,8 +97,10 @@ io.on("connection", (socket) => {
   );
 
   socket.on("disconnect", () => {
-    onlineUser = onlineUser.filter((eachOnlineUser) => {
-      return eachOnlineUser.socketId !== socket.id;
+    [...onlineUser.entries()].forEach(([uid, sid]) => {
+      if (sid === socket.id) {
+        onlineUser.delete(uid);
+      }
     });
     io.emit("getOnlineUsers", onlineUser);
     console.log("User disconnected: " + socket.id);
