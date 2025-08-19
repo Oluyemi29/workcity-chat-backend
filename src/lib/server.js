@@ -21,7 +21,7 @@ io.on("connection", (socket) => {
     });
     socket.on("addUser", (userId) => {
         onlineUser.set(userId, socket.id);
-        io.emit("getOnlineUsers", onlineUser);
+        io.emit("getOnlineUsers", [...onlineUser.keys()]);
     });
     socket.on("typing", ({ isTyping, userName, conversationId }) => {
         socket
@@ -80,7 +80,7 @@ io.on("connection", (socket) => {
                 onlineUser.delete(uid);
             }
         });
-        io.emit("getOnlineUsers", onlineUser);
+        io.emit("getOnlineUsers", [...onlineUser.keys()]);
         console.log("User disconnected: " + socket.id);
     });
 });
