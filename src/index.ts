@@ -11,7 +11,7 @@ import ConnectDB from "./connect/ConnectDb.js";
 import job from "./cron.js";
 
 dotenv.config();
-await ConnectDB();
+ConnectDB();
 app.use(cookieParser());
 app.use(
   cors({
