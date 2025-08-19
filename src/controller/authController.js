@@ -99,8 +99,8 @@ export const Logout = async (req, res) => {
     try {
         res.clearCookie("jwttoken", {
             httpOnly: true,
-            sameSite: "lax",
-            secure: process.env.NODE_ENV !== "development",
+            sameSite: "none",
+            secure: true,
         });
         return res.status(200).send({
             success: true,
