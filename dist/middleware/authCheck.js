@@ -44,13 +44,6 @@ export const IsLogginActive = async (req, res) => {
 };
 export const ProtectedRoute = async (req, res, next) => {
     try {
-        // const authToken = req.headers.authorization;
-        // if (!authToken) {
-        //   return res.status(400).send({
-        //     success: false,
-        //     message: "Unauthorise access",
-        //   });
-        // }
         const token = req.cookies.jwttoken;
         if (!token) {
             return res.status(400).send({
