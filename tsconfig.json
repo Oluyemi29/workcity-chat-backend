@@ -3,11 +3,11 @@
     "module": "nodenext",
     "target": "esnext",
     "moduleResolution": "nodenext",
-    "types": ["node"],
+    "types": ["node", "express","bcrypt","jsonwebtoken","morgan","cookie-parser"],
     "strict": true,
     "skipLibCheck": true,
-    "outDir": "dist", 
-    "rootDir": "src", 
+    "outDir": "dist",
+    "rootDir": "src",
     "esModuleInterop": true
   }
 }
